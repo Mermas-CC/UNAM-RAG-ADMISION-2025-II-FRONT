@@ -1,0 +1,239 @@
+.chat-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--chat-bg-color); /* This might be redundant if index.css defines it */
+  color: var(--text-color); /* This might be redundant if index.css defines it */
+  position: relative;
+}
+
+.messages-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat-box-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#chat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* These message-wrapper styles are likely redundant or conflicting with index.css */
+/* .message-wrapper {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.message-wrapper.user {
+  justify-content: flex-end;
+}
+
+.message-wrapper.bot {
+  justify-content: flex-start;
+} */
+
+/* Avatar styles are conflicting with index.css */
+/* .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--avatar-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--avatar-text-color);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.message-wrapper.user .avatar {
+  margin-left: 10px;
+}
+
+.message-wrapper.bot .avatar {
+  margin-right: 10px;
+} */
+
+/* Message content styles are conflicting with index.css */
+/* .message-content {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.message-wrapper.user .message-content {
+  background-color: var(--user-message-bg-color);
+  color: var(--user-message-text-color);
+  border-bottom-right-radius: 2px;
+}
+
+.message-wrapper.bot .message-content {
+  background-color: var(--bot-message-bg-color);
+  color: var(--bot-message-text-color);
+  border-bottom-left-radius: 2px;
+} */
+
+/* Typing indicator span styles are conflicting with index.css */
+/* .typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--typing-indicator-color);
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+} */
+
+#input-dock {
+  padding: 15px 20px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--input-dock-bg-color); /* This might be redundant */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg-color); /* This might be redundant */
+  border-radius: 25px;
+  padding: 5px 15px;
+  border: 1px solid var(--input-border-color); /* This might be redundant */
+}
+
+.message-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--input-text-color); /* This might be redundant */
+  font-size: 16px;
+  resize: none;
+  padding: 8px 0;
+  max-height: 100px; /* Limit textarea height */
+}
+
+.message-input::placeholder {
+  color: var(--placeholder-color); /* This might be redundant */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.send-button {
+  background-color: var(--send-button-bg-color); /* This might be redundant */
+  color: var(--send-button-text-color); /* This might be redundant */
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.send-button:disabled {
+  background-color: var(--send-button-disabled-bg-color); /* This might be redundant */
+  cursor: not-allowed;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: var(--send-button-hover-bg-color); /* This might be redundant */
+}
+
+.welcome-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 100px; /* Adjust as needed to lift content */
+}
+
+.welcome-title {
+  font-size: 2.5em;
+  color: var(--welcome-title-color); /* This might be redundant */
+  margin-bottom: 30px;
+}
+
+.welcome-section .input-wrapper {
+  width: 60%; /* Adjust width for welcome screen input */
+  max-width: 700px;
+}
+
+.welcome-section .message-input {
+  text-align: center;
+}
+
+/* Suggested Questions styles are conflicting with index.css */
+/* .suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.suggestion-chip {
+  background-color: var(--chip-bg-color);
+  color: var(--chip-text-color);
+  border: 1px solid var(--chip-border-color);
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.suggestion-chip:hover {
+  background-color: var(--chip-bg-color-hover);
+} */
+
+.bot-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start for bot messages */
+  max-width: 70%; /* Keep the same max-width as message-content */
+}
+
+.message-wrapper.bot .message-content {
+  margin-bottom: 10px; /* Add some space between the message and suggestions */
+}
