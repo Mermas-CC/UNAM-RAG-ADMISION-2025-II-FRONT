@@ -264,11 +264,13 @@
     .send-button:hover:not(:disabled) { background-color: var(--aimara-dark); transform: scale(1.05); }
     .send-button:disabled { background-color: #525252; cursor: not-allowed; opacity: 0.6; }
 
-    .message-wrapper { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; max-width: 90%; animation: fadeInUp 0.4s ease-out; }
+    .message-wrapper { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; max-width: 95%; animation: fadeInUp 0.4s ease-out; }
     .message-wrapper.user { margin-left: auto; flex-direction: row-reverse; }
     .avatar { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; color: white; }
     .message-wrapper.user .avatar { background-color: var(--aimara-primary); }
-    .message-wrapper.bot .avatar { background-color: #525252; }
+    .message-wrapper.bot .avatar, .message-wrapper.model .avatar { background-color: #6B7280; }
+    [data-theme="light"] .message-wrapper.bot .avatar, [data-theme="light"] .message-wrapper.model .avatar { color: white; }
+    [data-theme="dark"] .message-wrapper.bot .avatar, [data-theme="dark"] .message-wrapper.model .avatar { color: white; }
     .message-content { padding: 0.8rem 1.1rem; border-radius: 1rem; font-size: 0.92rem; line-height: 1.6; font-weight: 400; word-wrap: break-word; }
     .message-wrapper.user .message-content { background-color: var(--aimara-primary); color: white; border-top-right-radius: 0.25rem; }
     .message-wrapper.bot .message-content { background-color: var(--bg-msg-bot); border: 1px solid var(--border-color); border-top-left-radius: 0.25rem; color: var(--text-secondary); }
@@ -347,7 +349,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start; /* Align items to the start for bot messages */
-      max-width: 70%; /* Keep the same max-width as message-content */
+      max-width: 85%; /* Increased width for bot messages */
     }
 
     .message-wrapper.bot .message-content {
@@ -477,4 +479,269 @@
 
 #aimara-logo {
   @apply h-6 w-auto;
+  transition: all 0.3s ease;
+}
+
+/* Logo uses correct files based on theme, no filters needed */
+
+/* WELCOME MODAL STYLES */
+.welcome-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 1;
+  animation: fadeInModal 0.4s ease-out;
+}
+
+.welcome-modal-content {
+  background-color: var(--bg-sidebar);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 550px;
+  max-height: 85vh;
+  position: relative;
+  transform: scale(0.9);
+  animation: scaleInModal 0.4s ease-out forwards;
+}
+
+.welcome-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--hover-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  z-index: 10;
+}
+
+.welcome-modal-close:hover {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.welcome-modal-header {
+  text-align: center;
+  padding: 2rem 2rem 1rem;
+  position: relative;
+}
+
+.welcome-modal-logo {
+  margin-bottom: 1rem;
+}
+
+.welcome-modal-logo img {
+  height: 3rem;
+  width: auto;
+}
+
+.welcome-modal-bot-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, var(--aimara-primary), var(--aimara-dark));
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+  animation: bounceIn 0.6s ease-out 0.2s both;
+}
+
+.welcome-modal-body {
+  padding: 0 2rem 2rem;
+}
+
+.welcome-modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.welcome-modal-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.welcome-modal-description > p:first-child {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.welcome-modal-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.welcome-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--hover-bg);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.welcome-feature-item:hover {
+  background: var(--bg-input);
+  border-color: var(--aimara-primary);
+  transform: translateY(-1px);
+}
+
+.feature-icon {
+  color: var(--aimara-primary);
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.welcome-feature-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.welcome-feature-item strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.welcome-feature-item span {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.welcome-modal-footer-text {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.welcome-modal-footer-text strong {
+  color: var(--aimara-primary);
+  font-weight: 600;
+}
+
+.welcome-modal-button {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, var(--aimara-primary), var(--aimara-dark));
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 194, 203, 0.3);
+}
+
+.welcome-modal-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 194, 203, 0.4);
+}
+
+.welcome-modal-button:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleInModal {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsive styles for welcome modal */
+@media (max-width: 768px) {
+  .welcome-modal-content {
+    width: 95%;
+    max-height: 90vh;
+    margin: 1rem;
+  }
+  
+  .welcome-modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+  
+  .welcome-modal-body {
+    padding: 0 1.5rem 1.5rem;
+  }
+  
+  .welcome-modal-bot-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+  
+  .welcome-modal-title {
+    font-size: 1.35rem;
+  }
+  
+  .welcome-modal-features {
+    gap: 0.75rem;
+  }
+  
+  .welcome-feature-item {
+    padding: 0.75rem;
+  }
 }

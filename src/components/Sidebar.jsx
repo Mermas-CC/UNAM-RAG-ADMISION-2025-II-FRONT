@@ -1,7 +1,7 @@
 import { FaMoon, FaSun, FaGraduationCap, FaFileAlt, FaCalendarAlt, FaHeadset } from 'react-icons/fa';
 
 const Sidebar = ({ theme, toggleTheme, sendExampleMessage }) => {
-  const logoSrc = theme === 'light' ? '/logo_aimara_dark.png' : '/logo_aimara_white.png';
+  const logoSrc = theme === 'light' ? '/logo_aimara_white.png' : '/logo_aimara_dark.png';
 
   return (
     <aside className="sidebar" id="sidebar">

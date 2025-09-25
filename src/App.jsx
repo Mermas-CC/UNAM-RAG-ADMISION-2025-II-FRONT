@@ -1,16 +1,31 @@
 import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import ChatArea from './components/ChatArea';
+import WelcomeModal from './components/WelcomeModal';
 import './index.css';
 
 function App() {
   const [theme, setTheme] = useState('dark');
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    // Check if this is the first visit
+    const hasVisited = localStorage.getItem('hasVisitedChatbot');
+    if (!hasVisited) {
+      setShowWelcomeModal(true);
+    }
+  }, []);
+
+  const closeWelcomeModal = () => {
+    setShowWelcomeModal(false);
+    localStorage.setItem('hasVisitedChatbot', 'true');
+  };
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -80,6 +95,9 @@ function App() {
     <div className="app-container">
       <Sidebar theme={theme} toggleTheme={toggleTheme} sendExampleMessage={sendExampleMessage} />
       <ChatArea messages={messages} isTyping={isTyping} sendMessage={sendMessage} />
+      {showWelcomeModal && (
+        <WelcomeModal onClose={closeWelcomeModal} theme={theme} />
+      )}
     </div>
   );
 }
