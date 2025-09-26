@@ -36,6 +36,7 @@ build/
 *.log
 .vscode/
 .idea/
+.env
 
 # Ignorar archivos personales fuera del proyecto
 ../../*
