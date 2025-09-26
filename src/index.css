@@ -507,8 +507,7 @@
   border: 1px solid var(--border-color);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   width: 90%;
-  max-width: 550px;
-  max-height: 85vh;
+  max-width: 400px;
   position: relative;
   transform: scale(0.9);
   animation: scaleInModal 0.4s ease-out forwards;
@@ -541,7 +540,7 @@
 
 .welcome-modal-header {
   text-align: center;
-  padding: 2rem 2rem 1rem;
+  padding: 1.5rem 1.5rem 0.5rem;
   position: relative;
 }
 
@@ -558,39 +557,39 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   background: linear-gradient(135deg, var(--aimara-primary), var(--aimara-dark));
   border-radius: 50%;
   color: white;
-  font-size: 2rem;
-  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+  margin: 0 auto 0.5rem;
   animation: bounceIn 0.6s ease-out 0.2s both;
 }
 
 .welcome-modal-body {
-  padding: 0 2rem 2rem;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .welcome-modal-title {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--text-primary);
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.3;
 }
 
 .welcome-modal-description {
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .welcome-modal-description > p:first-child {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
+  margin-bottom: 0;
+  font-size: 0.95rem;
 }
 
 .welcome-modal-features {
